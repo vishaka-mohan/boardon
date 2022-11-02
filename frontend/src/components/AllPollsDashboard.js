@@ -55,7 +55,8 @@ function AllPollsDashboard () {
 
     useEffect(() => {
         //console.log(window.location.pathname)
-        fetch('http://localhost:3005/hr/allPolls', {
+        const allPollsAPI = process.env.REACT_APP_POLL_SERVICE+"/hr/allPolls" || 'http://localhost:3005/hr/allPolls'
+        fetch(allPollsAPI, {
             credentials : 'include'
         }).then(
         response => {return response.json()}
@@ -78,7 +79,8 @@ function AllPollsDashboard () {
 
     const handleClick = async (e) => {
         console.log('hellp')
-        axios.delete('http://localhost:3002/auth/logout', {
+        const logoutAPI = process.env.REACT_APP_AUTH_SERVICE+"/auth/logout" || 'http://localhost:3002/auth/logout'
+        axios.delete(logoutAPI, {
             withCredentials : true
         } )
         .then(res=> {console.log(res.data)

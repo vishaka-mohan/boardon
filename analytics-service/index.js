@@ -21,7 +21,7 @@ app.use((req, res, next) => {
   log.debug(`${req.method}: ${req.url}`);
   return next();
 });
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+app.use(cors({ credentials: true, origin: "https://boardon-fe.vercel.app/" }));
 
 const pollRoutesHR = require("./api/routes/pollsRoutesHR");
 const pollRoutesEmp = require("./api/routes/pollsRoutesEmp");

@@ -95,8 +95,10 @@ function IndividualPoll() {
     ques.pollId = pollId;
     console.log(ques);
 
+    const addQuestion =  process.env.REACT_APP_POLL_SERVICE + "/hr/addQuestion" || "http://localhost:3005/hr/addQuestion"
+
     axios
-      .post("http://localhost:3005/hr/addQuestion", ques, {
+      .post(addQuestion, ques, {
         withCredentials: true,
       })
       .then((res) => {
@@ -117,8 +119,11 @@ function IndividualPoll() {
     } else {
       p.status = "no";
     }
+
+    const postPollAPIHR = process.env.REACT_APP_POLL_SERVICE + "/hr/postPoll" || "http://localhost:3005/hr/postPoll"
+
     axios
-      .post("http://localhost:3005/hr/postPoll", p, {
+      .post(postPollAPIHR, p, {
         withCredentials: true,
       })
       .then((res) => {
@@ -136,7 +141,8 @@ function IndividualPoll() {
 
   useEffect(() => {
     console.log(window.location.pathname);
-    var url = "http://localhost:3005" + window.location.pathname.toString();
+    
+    var url = process.env.REACT_APP_POLL_SERVICE+ window.location.pathname.toString() || "http://localhost:3005" + window.location.pathname.toString();
     fetch(url, {
       credentials: "include",
     })
@@ -162,8 +168,9 @@ function IndividualPoll() {
 
   const handleClick = async (e) => {
     console.log("hellp");
+    const logoutAPI = process.env.REACT_APP_AUTH_SERVICE+"/auth/logout" || 'http://localhost:3002/auth/logout'
     axios
-      .delete("http://localhost:3002/auth/logout", {
+      .delete(logoutAPI, {
         withCredentials: true,
       })
       .then((res) => {

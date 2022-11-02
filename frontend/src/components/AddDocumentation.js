@@ -20,8 +20,8 @@ const DocumentForm = () => {
       title: title,
       body: body,
     };
-
-    const response = await fetch("http://localhost:3001/documentation/upload", {
+    const uploadDoc = process.env.REACT_APP_SEARCHAPI + "/documentation/upload" || "http://localhost:3001/documentation/upload"
+    const response = await fetch(uploadDoc, {
       credentials: "include",
       method: "POST",
       headers: {

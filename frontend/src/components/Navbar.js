@@ -95,7 +95,8 @@ function Navbar () {
         console.log(employee)
 
         if(employee.role === 'user'){
-            axios.post('http://localhost:3002/auth/user/login', employee, {
+            const userLoginAPI = process.env.REACT_APP_AUTH_SERVICE+ "/auth/user/login" || 'http://localhost:3002/auth/user/login'
+            axios.post(userLoginAPI, employee, {
                 withCredentials: true
             })
             .then(res=> {console.log(res.data)
@@ -118,7 +119,10 @@ function Navbar () {
             .catch(err=>console.log(err.response.data));
         }
         else if(employee.role === 'company'){
-            axios.post('http://localhost:3002/auth/company/login', employee, {
+
+            const loginAPI = process.env.process.env.REACT_APP_AUTH_SERVICE+ '/auth/company/login' || 'http://localhost:3002/auth/company/login'
+
+            axios.post(loginAPI, employee, {
                 withCredentials: true
             })
             .then(res=> {console.log(res.data)
@@ -155,9 +159,9 @@ function Navbar () {
         company.address = address
         company.domain = domain
         console.log(domain)
-
+        const registerAPI = process.env.REACT_APP_AUTH_SERVICE + "/auth/company/register" || 'http://localhost:3002/auth/company/register'
         
-        axios.post('http://localhost:3002/auth/company/register', company, {
+        axios.post(registerAPI, company, {
             withCredentials: true
         })
         .then(res=> {console.log(res.data)

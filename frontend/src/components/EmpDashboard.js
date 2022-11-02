@@ -59,8 +59,9 @@ function EmpDashboard() {
 
   const handleClick = async (e) => {
     console.log("hellp");
+    const logoutAPI = process.env.REACT_APP_AUTH_SERVICE+"/auth/logout" || 'http://localhost:3002/auth/logout'
     axios
-      .delete("http://localhost:3002/auth/logout", {
+      .delete(logoutAPI, {
         withCredentials: true,
       })
       .then((res) => {

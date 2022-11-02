@@ -55,7 +55,8 @@ function HrPolls () {
 
     useEffect(() => {
         //console.log(window.location.pathname)
-        fetch('http://localhost:3005/hr/allPolls', {
+        const allPollsAPIHR = process.env.REACT_APP_POLL_SERVICE+ "/hr/allPolls" || 'http://localhost:3005/hr/allPolls'
+        fetch(allPollsAPIHR, {
             credentials : 'include'
         }).then(
         response => {return response.json()}
@@ -78,7 +79,8 @@ function HrPolls () {
 
     const handleClick = async (e) => {
         console.log('hellp')
-        axios.delete('http://localhost:3002/auth/logout', {
+        const logoutAPI = process.env.REACT_APP_AUTH_SERVICE+"/auth/logout" || 'http://localhost:3002/auth/logout'
+        axios.delete(logoutAPI, {
             withCredentials : true
         } )
         .then(res=> {console.log(res.data)
@@ -97,7 +99,8 @@ function HrPolls () {
         e.preventDefault()
         var p = {pollName : pollName}
         console.log(p)
-        axios.post('http://localhost:3005/hr/createPoll', p, {
+        const createAPI = process.env.REACT_APP_POLL_SERVICE + "/hr/createPoll" + 'http://localhost:3005/hr/createPoll'
+        axios.post(createAPI, p, {
             withCredentials: true
         })
         .then(res=> {console.log(res.data)

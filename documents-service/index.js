@@ -23,7 +23,8 @@ app.use(express.static(path.join(__dirname, "public")));
 //   );
 //   next();
 // });
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+const host = process.env.FRONTEND || "http://localhost:3000"
+app.use(cors({ credentials: true, origin: host }));
 const connectDB = require("./api/config/db");
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());

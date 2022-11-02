@@ -23,10 +23,11 @@ const Doc = (docObj) => {
 const Result = () => {
   const { searchQuery } = useParams();
   const [docs, setDocs] = useState([]);
+  const searchAPI = process.env.REACT_APP_SEARCHAPI+"/documentation/search?searchQuery="+searchQuery || "http://localhost:3001/documentation/search?searchQuery="+searchQuery
   useEffect(() => {
     const fetchData = async () => {
       const responseData = await fetch(
-        `http://localhost:3001/documentation/search?searchQuery=${searchQuery}`,
+        searchAPI,
         {
           credentials: "include",
         }

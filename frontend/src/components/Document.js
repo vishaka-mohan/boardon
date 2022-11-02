@@ -5,10 +5,11 @@ import parse from "html-react-parser";
 const Document = () => {
   const { id } = useParams();
   const [doc, setDoc] = useState(null);
+  const searchInd = process.env.REACT_APP_SEARCHAPI+"/documentation/search/"+id || `http://localhost:3001/documentation/search/${id}`
   useEffect(() => {
     const fetchData = async () => {
       const responseData = await fetch(
-        `http://localhost:3001/documentation/search/${id}`,
+        searchInd,
         {
           credentials: "include",
         }

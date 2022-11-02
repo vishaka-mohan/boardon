@@ -20,10 +20,11 @@ const Doc = (docObj) => {
 const Resources = () => {
   const [docs, setDocs] = useState(null);
   const navigate = useNavigate();
+  const searchAll = process.env.REACT_APP_SEARCHAPI+"/documentation/search/all" || "http://localhost:3001/documentation/search/all"
   useEffect(() => {
     const fetchData = async () => {
       const responseData = await fetch(
-        "http://localhost:3001/documentation/search/all",
+        searchAll,
         {
           credentials: "include",
         }

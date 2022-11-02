@@ -56,7 +56,8 @@ const GenerateCredentials = () => {
       return;
     }
     console.log(file.type);
-    const url = "http://localhost:3003/cred/generateFromSheet";
+
+    const url = process.env.REACT_APP_EMAIL_SERVICE + "/cred/generateFromSheet" || "http://localhost:3003/cred/generateFromSheet";
     const formData = new FormData();
     formData.append("hireSheet", file);
     formData.append("fileName", file.name);

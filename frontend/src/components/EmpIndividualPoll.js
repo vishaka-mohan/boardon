@@ -77,7 +77,8 @@ function EmpIndividualPoll () {
         //e.preventDefault();
         var ans = answers
         ans.pollId = pollId
-        axios.post('http://localhost:3005/emp/submitPoll', ans, {
+        const submitPollAPI = process.env.REACT_APP_POLL_SERVICE + "/emp/submitPoll" + 'http://localhost:3005/emp/submitPoll'
+        axios.post(submitPollAPI, ans, {
             withCredentials: true
         })
         .then(res=> {console.log(res.data)
@@ -95,7 +96,8 @@ function EmpIndividualPoll () {
     const handlePost = async (e) => {
         e.preventDefault()
         var p = {pollId : pollId}
-        axios.post('http://localhost:3005/hr/postPoll', p, {
+        const postPollAPI = process.env.REACT_APP_POLL_SERVICE+"/hr/postPoll" || 'http://localhost:3005/hr/postPoll'
+        axios.post(postPollAPI, p, {
             withCredentials: true
         })
         .then(res=> {console.log(res.data)
@@ -109,7 +111,8 @@ function EmpIndividualPoll () {
 
     useEffect(() => {
         console.log(window.location.pathname)
-        var url = 'http://localhost:3005'+window.location.pathname.toString()
+        const url = process.env.REACT_APP_POLL_SERVICE+window.location.pathname.toString() || 'http://localhost:3005'+window.location.pathname.toString()
+         
         fetch(url, {
             credentials : 'include'
         }).then(
@@ -145,7 +148,8 @@ function EmpIndividualPoll () {
 
     const handleClick = async (e) => {
         console.log('hellp')
-        axios.delete('http://localhost:3002/auth/logout', {
+        const logoutAPI = process.env.REACT_APP_AUTH_SERVICE+"/auth/logout" || 'http://localhost:3002/auth/logout'
+        axios.delete(logoutAPI, {
             withCredentials : true
         } )
         .then(res=> {console.log(res.data)

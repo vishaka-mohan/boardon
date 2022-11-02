@@ -38,7 +38,8 @@ function EmpPolls() {
 
   useEffect(() => {
     //console.log(window.location.pathname)
-    fetch("http://localhost:3005/emp/viewPolls", {
+    const viewEmpAPI = process.env.REACT_APP_POLL_SERVICE+"/emp/viewPolls" || "http://localhost:3005/emp/viewPolls"
+    fetch(viewEmpAPI, {
       credentials: "include",
     })
       .then(

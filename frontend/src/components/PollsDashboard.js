@@ -78,8 +78,9 @@ function PollsDashboard () {
 
     useEffect(() => {
         console.log(window.location.pathname)
-        var url = 'http://localhost:3005/hr/viewAllresults'
-        fetch(url, {
+        const viewAllRes = process.env.REACT_APP_POLL_SERVICE + "/hr/viewAllresults" || 'http://localhost:3005/hr/viewAllresults'
+        //var url = 'http://localhost:3005/hr/viewAllresults'
+        fetch(viewAllRes, {
             credentials : 'include'
         }).then(
         response => {return response.json()}
@@ -111,8 +112,11 @@ function PollsDashboard () {
         setPollName(event.target.value)
         setPid(event.target.value)
         console.log(pid)
-        var url = 'http://localhost:3005/hr/viewAllresults?poll='+ event.target.value
-        fetch(url, {
+
+        const viewIndividualPoll = process.env.REACT_APP_POLL_SERVICE+ "/hr/viewAllresults?poll=" + event.target.value || 'http://localhost:3005/hr/viewAllresults?poll='+ event.target.value
+
+        //var url = 'http://localhost:3005/hr/viewAllresults?poll='+ event.target.value
+        fetch(viewIndividualPoll, {
             credentials : 'include'
         }).then(
         response => {return response.json()}

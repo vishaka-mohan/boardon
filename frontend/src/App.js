@@ -17,6 +17,8 @@ import Document from "./components/Document";
 import Result from "./components/SearchResults";
 import AddDocumentation from "./components/AddDocumentation";
 import GenerateCredentials from "./components/GenerateCredentials";
+//require('dotenv').config()
+console.log(process.env.REACT_APP_BAKA)
 function App() {
   return (
     <Router>
