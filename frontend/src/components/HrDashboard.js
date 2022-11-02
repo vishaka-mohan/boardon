@@ -9,6 +9,9 @@ import user_icon from "./user_icon.png";
 import message_icon from "./message_icon.png";
 import { useNavigate } from "react-router-dom";
 
+const host = process.env.FRONTEND || "http://localhost:3000"
+
+
 const customStyles = {
   content: {
     top: "50%",
@@ -158,7 +161,7 @@ function HrDashboard() {
           <ul>
             <li>
               {window.location.href.split("?")[0] ===
-              "http://localhost:3000/hr/generateCredentials" ? (
+              host+"/hr/generateCredentials" ? (
                 <a href={"/hr/generateCredentials"} className="nav_link active">
                   <ion-icon
                     name="chatbubbles-outline"
@@ -183,7 +186,7 @@ function HrDashboard() {
 
             <li>
               {window.location.href.split("?")[0] ===
-              "http://localhost:3000/hr/hrDashboard" ? (
+              host+"/hr/hrDashboard" ? (
                 <a href={"/hr/hrDashboard"} className="nav_link active">
                   <ion-icon
                     name="chatbubbles-outline"
@@ -208,7 +211,7 @@ function HrDashboard() {
 
             <li>
               {window.location.href.split("?")[0] ===
-              "http://localhost:3000/hr/getDocs" ? (
+              host+"/hr/getDocs" ? (
                 <a href={"/hr/getDocs"} className="nav_link active">
                   <ion-icon
                     name="chatbubbles-outline"
@@ -232,7 +235,7 @@ function HrDashboard() {
             </li>
             <li>
               {window.location.href.split("?")[0] ===
-              "http://localhost:3000/hr/allPolls" ? (
+              host+"/hr/allPolls" ? (
                 <a href={"/hr/allPolls"} className="nav_link active">
                   <ion-icon
                     name="chatbubbles-outline"
@@ -256,7 +259,7 @@ function HrDashboard() {
             </li>
             <li>
               {window.location.href.split("?")[0] ===
-              "http://localhost:3000/hr/viewAllresults" ? (
+              host+"/hr/viewAllresults" ? (
                 <a href={"/hr/viewAllresults"} className="nav_link active">
                   <ion-icon
                     name="chatbubbles-outline"
@@ -280,7 +283,7 @@ function HrDashboard() {
             </li>
             <li>
               {window.location.href.split("?")[0] ===
-              "http://localhost:3000/hr/resources" ? (
+              host+"/hr/resources" ? (
                 <a href={"/hr/resources"} className="nav_link active">
                   <ion-icon
                     name="chatbubbles-outline"

@@ -10,6 +10,8 @@ import user_icon from "./user_icon.png";
 import message_icon from "./message_icon.png";
 import { useNavigate } from "react-router-dom";
 
+const host = process.env.FRONTEND || "http://localhost:3000"
+
 const customStyles = {
   content: {
     top: "50%",
@@ -171,7 +173,7 @@ function EmpDashboard() {
               </li>
               <li>
                 {window.location.href.split("?")[0] ===
-                "http://localhost:3000/emp/empDashboard" ? (
+                host+"/emp/empDashboard" ? (
                   <a href={"/emp/empDashboard"} className="nav_link active">
                     <ion-icon
                       name="chatbubbles-outline"
@@ -196,7 +198,7 @@ function EmpDashboard() {
 
               <li>
                 {window.location.href.split("?")[0] ===
-                "http://localhost:3000/emp/viewPolls" ? (
+                host+"/emp/viewPolls" ? (
                   <a href={"/emp/viewPolls"} className="nav_link active">
                     <ion-icon
                       name="chatbubbles-outline"
@@ -221,7 +223,7 @@ function EmpDashboard() {
 
               <li>
                 {window.location.href.split("?")[0] ===
-                "http://localhost:3000/emp/resources" ? (
+                host+"/emp/resources" ? (
                   <a href={"/emp/resources"} className="nav_link active">
                     <ion-icon
                       name="chatbubbles-outline"
