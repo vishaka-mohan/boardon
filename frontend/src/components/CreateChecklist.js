@@ -57,9 +57,9 @@ function CreateChecklist(){
         if(state.VoterId){
             newdata.push('VoterId')
         }
+        const url1 = process.env.REACT_APP_DOCUMENTS_SERVICE + "/hr/createChecklist" || 'http://localhost:5000/hr/createChecklist'
         
-        
-        axios.post('http://localhost:5000/hr/createChecklist', docsToAdd, {
+        axios.post(url1, docsToAdd, {
             withCredentials: true
         })
         .then(res=> {console.log(res.data)
@@ -78,7 +78,9 @@ function CreateChecklist(){
     }
 
     useEffect(() => {
-        fetch("http://localhost:5000/hr/hrDashboard", {
+        const url2 = process.env.REACT_APP_DOCUMENTS_SERVICE + "/hr/hrDashboard" || 'http://localhost:5000/hr/hrDashboard'
+        
+        fetch(url2, {
             credentials: 'include'
         }).then(
         response => {return response.json()}
