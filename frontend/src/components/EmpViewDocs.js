@@ -30,7 +30,8 @@ function EmpViewDocs(){
     
 
     useEffect(() => {
-        fetch('http://localhost:5000/emp/empDashboard', {
+        const url1 = process.env.REACT_APP_DOCUMENTS_SERVICE+ "/emp/empDashboard" || 'http://localhost:5000/emp/empDashboard'
+        fetch(url1, {
             credentials : 'include'
         }).then(
         response => {return response.json()}
@@ -85,7 +86,8 @@ function EmpViewDocs(){
         }
         
         setLoading('loading')
-        axios.post('http://localhost:5000/emp/uploadDocs',commToAdd, {
+        const url2 = process.env.REACT_APP_DOCUMENTS_SERVICE + "/emp/uploadDocs" || 'http://localhost:5000/emp/uploadDocs'
+        axios.post(url2,commToAdd, {
             withCredentials: true
         })
         .then(res=> {

@@ -56,8 +56,10 @@ function IndividualDocs() {
     }
 
     commToAdd.username = username;
+    const url1 = process.env.REACT_APP_DOCUMENTS_SERVICE + "/hr/postComment" || 'http://localhost:5000/hr/postComment'
+       
     axios
-      .post("http://localhost:5000/hr/postComment", commToAdd, {
+      .post(url1, commToAdd, {
         withCredentials: true,
       })
       .then((res) => {
