@@ -120,7 +120,7 @@ function Navbar () {
         }
         else if(employee.role === 'company'){
 
-            const loginAPI = process.env.process.env.REACT_APP_AUTH_SERVICE+ '/auth/company/login' || 'http://localhost:3002/auth/company/login'
+            const loginAPI = process.env.REACT_APP_AUTH_SERVICE+ '/auth/company/login' || 'http://localhost:3002/auth/company/login'
 
             axios.post(loginAPI, employee, {
                 withCredentials: true
