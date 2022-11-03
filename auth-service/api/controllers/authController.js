@@ -114,9 +114,10 @@ const companyLoginController = (req, res) => {
               expiresIn: "1h",
             }
           );
+          log.info(dbPassword)
 
           //res.cookie("authToken", token);
-          res.status(200).cookie('token', token, { httpOnly: true, domain: process.env.NODE_ENV === 'development' ? 'localhost' : 'boardon-3h2q.vercel.app' }).json({
+          res.status(200).cookie('authToken', token, { secure : true, sameSite : 'none',domain: process.env.NODE_ENV === 'development' ? 'localhost' : 'boardon-3h2q.vercel.app' }).json({
             status: "authenticated",
             token: token,
           })
