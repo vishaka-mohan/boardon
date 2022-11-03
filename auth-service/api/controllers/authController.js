@@ -110,9 +110,9 @@ const companyLoginController = (req, res) => {
               isEmployee: false,
             },
             process.env.JWT_KEY,
-            {
-              expiresIn: "1h",
-            }
+            // {
+            //   expiresIn: "1h",
+            // }
           );
           log.info(dbPassword)
 
