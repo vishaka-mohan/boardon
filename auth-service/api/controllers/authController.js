@@ -117,10 +117,19 @@ const companyLoginController = (req, res) => {
           log.info(dbPassword)
 
           //res.cookie("authToken", token);
-          res.status(200).cookie('authToken', token, { secure : true, sameSite : 'none',domain: process.env.NODE_ENV === 'development' ? 'localhost' : 'boardon-3h2q.vercel.app' }).json({
-            status: "authenticated",
-            token: token,
-          })
+          // res.status(200).cookie('authToken', token, { secure : true, sameSite : 'none',domain: process.env.NODE_ENV === 'development' ? 'localhost' : 'boardon-3h2q.vercel.app' }).json({
+          //   status: "authenticated",
+          //   token: token,
+          // })
+
+          if (process.env.NODE_ENV === 'development'){
+            res.setHeader('Set-Cookie',[`authToken=${token};  Path=/;HttpOnly; maxAge=86400000;SameSite=false;`]);
+          } else {
+            res.setHeader('Set-Cookie',[`authToken=${token};  Path=/;HttpOnly; maxAge=86400000;SameSite=None;Secure=true;`]);
+            console.log("helloo")
+          }
+
+
           // res.json({
           //   status: "authenticated",
           //   token: token,
