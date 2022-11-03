@@ -115,11 +115,15 @@ const companyLoginController = (req, res) => {
             }
           );
 
-          res.cookie("authToken", token);
-          res.json({
+          //res.cookie("authToken", token);
+          res.status(200).cookie('token', token, { httpOnly: true, domain: process.env.NODE_ENV === 'development' ? 'localhost' : 'boardon-3h2q.vercel.app' }).json({
             status: "authenticated",
             token: token,
-          });
+          })
+          // res.json({
+          //   status: "authenticated",
+          //   token: token,
+          // });
         } else {
           res.clearCookie("authToken");
           return res.json({status : "error",error : "Invalid Password"});
