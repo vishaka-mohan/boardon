@@ -125,7 +125,7 @@ const companyLoginController = (req, res) => {
           if (process.env.NODE_ENV === 'development'){
             res.setHeader('Set-Cookie',[`authToken=${token};  Path=/;HttpOnly; maxAge=86400000;SameSite=false;`]);
           } else {
-            res.setHeader('Set-Cookie',[`authToken=${token};  Path=/;HttpOnly; maxAge=86400000;SameSite=None;Secure=true;Domain=https://boardon-3h2q.vercel.app/`]);
+            res.setHeader('Set-Cookie',[`authToken=${token};  Path=/;HttpOnly; maxAge=86400000;SameSite=None;Secure=true;Domain=vercel.app`]);
             console.log("helloo")
           }
 
