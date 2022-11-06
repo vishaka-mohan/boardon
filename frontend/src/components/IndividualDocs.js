@@ -19,7 +19,9 @@ function IndividualDocs() {
 
   useEffect(() => {
     //console.log(window.location.pathname)
-    fetch(window.location.pathname, {
+    const url1 = process.env.REACT_APP_DOCUMENTS_SERVICE + window.location.pathname || "http://localhost:5000"+window.location.pathname
+  console.log(url1)
+    fetch(url1, {
       credentials: "include",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("authToken")}`,
