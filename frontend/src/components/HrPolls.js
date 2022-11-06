@@ -57,7 +57,8 @@ function HrPolls () {
         //console.log(window.location.pathname)
         const allPollsAPIHR = process.env.REACT_APP_POLL_SERVICE+ "/hr/allPolls" || 'http://localhost:3005/hr/allPolls'
         fetch(allPollsAPIHR, {
-            credentials : 'include'
+            credentials : 'include',
+            headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` }
         }).then(
         response => {return response.json()}
         //console.log(response)}
@@ -80,18 +81,19 @@ function HrPolls () {
     const handleClick = async (e) => {
         console.log('hellp')
         const logoutAPI = process.env.REACT_APP_AUTH_SERVICE+"/auth/logout" || 'http://localhost:3002/auth/logout'
-        axios.delete(logoutAPI, {
-            withCredentials : true
-        } )
-        .then(res=> {console.log(res.data)
-            if(res.data.status === "success"){
-                navigate('/')
-            }
+        localStorage.removeItem("authToken");
+        // axios.delete(logoutAPI, {
+        //     withCredentials : true
+        // } )
+        // .then(res=> {console.log(res.data)
+        //     if(res.data.status === "success"){
+        //         navigate('/')
+        //     }
             
             
         
-        })
-        .catch(err=>console.log(err.response.data));
+        // })
+        // .catch(err=>console.log(err.response.data));
     }
 
 
@@ -101,7 +103,10 @@ function HrPolls () {
         console.log(p)
         const createAPI = process.env.REACT_APP_POLL_SERVICE + "/hr/createPoll" + 'http://localhost:3005/hr/createPoll'
         axios.post(createAPI, p, {
-            withCredentials: true
+            withCredentials: true,
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+              },
         })
         .then(res=> {console.log(res.data)
            setBackendData(res.data)

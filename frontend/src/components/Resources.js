@@ -27,6 +27,9 @@ const Resources = () => {
         searchAll,
         {
           credentials: "include",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+          },
         }
       );
       const jsonData = await responseData.json();

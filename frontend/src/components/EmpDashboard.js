@@ -61,7 +61,8 @@ function EmpDashboard() {
 
   const handleClick = async (e) => {
     console.log("hellp");
-    const logoutAPI = process.env.REACT_APP_AUTH_SERVICE+"/auth/logout" || 'http://localhost:3002/auth/logout'
+    localStorage.removeItem("authToken");
+    /*const logoutAPI = process.env.REACT_APP_AUTH_SERVICE+"/auth/logout" || 'http://localhost:3002/auth/logout'
     axios
       .delete(logoutAPI, {
         withCredentials: true,
@@ -72,7 +73,7 @@ function EmpDashboard() {
           navigate("/");
         }
       })
-      .catch((err) => console.log(err.response.data));
+      .catch((err) => console.log(err.response.data));*/
   };
 
   return (

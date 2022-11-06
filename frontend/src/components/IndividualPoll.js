@@ -100,6 +100,9 @@ function IndividualPoll() {
     axios
       .post(addQuestion, ques, {
         withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+        },
       })
       .then((res) => {
         console.log(res.data);
@@ -145,6 +148,9 @@ function IndividualPoll() {
     var url = process.env.REACT_APP_POLL_SERVICE+ window.location.pathname.toString() || "http://localhost:3005" + window.location.pathname.toString();
     fetch(url, {
       credentials: "include",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+      },
     })
       .then(
         (response) => {
@@ -169,17 +175,18 @@ function IndividualPoll() {
   const handleClick = async (e) => {
     console.log("hellp");
     const logoutAPI = process.env.REACT_APP_AUTH_SERVICE+"/auth/logout" || 'http://localhost:3002/auth/logout'
-    axios
-      .delete(logoutAPI, {
-        withCredentials: true,
-      })
-      .then((res) => {
-        console.log(res.data);
-        if (res.data.status === "success") {
-          navigate("/");
-        }
-      })
-      .catch((err) => console.log(err.response.data));
+    localStorage.removeItem("authToken");
+    // axios
+    //   .delete(logoutAPI, {
+    //     withCredentials: true,
+    //   })
+    //   .then((res) => {
+    //     console.log(res.data);
+    //     if (res.data.status === "success") {
+    //       navigate("/");
+    //     }
+    //   })
+    //   .catch((err) => console.log(err.response.data));
   };
 
   return (

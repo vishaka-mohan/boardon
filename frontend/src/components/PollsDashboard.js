@@ -81,7 +81,10 @@ function PollsDashboard () {
         const viewAllRes = process.env.REACT_APP_POLL_SERVICE + "/hr/viewAllresults" || 'http://localhost:3005/hr/viewAllresults'
         //var url = 'http://localhost:3005/hr/viewAllresults'
         fetch(viewAllRes, {
-            credentials : 'include'
+            credentials : 'include',
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+              },
         }).then(
         response => {return response.json()}
         //console.log(response)}

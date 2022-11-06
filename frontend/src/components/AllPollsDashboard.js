@@ -57,6 +57,7 @@ function AllPollsDashboard () {
         //console.log(window.location.pathname)
         const allPollsAPI = process.env.REACT_APP_POLL_SERVICE+"/hr/allPolls" || 'http://localhost:3005/hr/allPolls'
         fetch(allPollsAPI, {
+            headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
             credentials : 'include'
         }).then(
         response => {return response.json()}
@@ -81,7 +82,11 @@ function AllPollsDashboard () {
         console.log('hellp')
         const logoutAPI = process.env.REACT_APP_AUTH_SERVICE+"/auth/logout" || 'http://localhost:3002/auth/logout'
         axios.delete(logoutAPI, {
-            withCredentials : true
+           
+            withCredentials : true,
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+              }
         } )
         .then(res=> {console.log(res.data)
             if(res.data.status === "success"){

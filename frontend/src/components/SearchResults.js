@@ -30,6 +30,9 @@ const Result = () => {
         searchAPI,
         {
           credentials: "include",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+          },
         }
       );
       const jsonData = await responseData.json();

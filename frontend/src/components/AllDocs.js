@@ -8,6 +8,7 @@ function AllDocs() {
 
   useEffect(() => {
     fetch(url1, {
+      headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
       credentials: "include",
     })
       .then(

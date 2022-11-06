@@ -60,7 +60,11 @@ function CreateChecklist(){
         const url1 = process.env.REACT_APP_DOCUMENTS_SERVICE + "/hr/createChecklist" || 'http://localhost:5000/hr/createChecklist'
         
         axios.post(url1, docsToAdd, {
-            withCredentials: true
+           
+            withCredentials: true,
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+              }
         })
         .then(res=> {console.log(res.data)
             setBackendData(res.data)
@@ -81,7 +85,8 @@ function CreateChecklist(){
         const url2 = process.env.REACT_APP_DOCUMENTS_SERVICE + "/hr/hrDashboard" || 'http://localhost:5000/hr/hrDashboard'
         
         fetch(url2, {
-            credentials: 'include'
+            credentials: 'include',
+            headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
         }).then(
         response => {return response.json()}
         //console.log(response)}

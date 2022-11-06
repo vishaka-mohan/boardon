@@ -64,12 +64,14 @@ const GenerateCredentials = () => {
     const config = {
       headers: {
         "content-type": "multipart/form-data",
+
       },
     };
     const response = await fetch(url, {
       method: "post",
       body: formData,
       credentials: "include",
+      headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` }
     });
 
     openModalOne();

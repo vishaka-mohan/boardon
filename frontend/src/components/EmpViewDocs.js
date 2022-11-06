@@ -88,7 +88,8 @@ function EmpViewDocs(){
         setLoading('loading')
         const url2 = process.env.REACT_APP_DOCUMENTS_SERVICE + "/emp/uploadDocs" || 'http://localhost:5000/emp/uploadDocs'
         axios.post(url2,commToAdd, {
-            withCredentials: true
+            withCredentials: true,
+            headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` }
         })
         .then(res=> {
             console.log(res.data) 
