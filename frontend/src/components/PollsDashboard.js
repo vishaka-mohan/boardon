@@ -120,7 +120,10 @@ function PollsDashboard () {
 
         //var url = 'http://localhost:3005/hr/viewAllresults?poll='+ event.target.value
         fetch(viewIndividualPoll, {
-            credentials : 'include'
+            credentials : 'include',
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+              },
         }).then(
         response => {return response.json()}
         //console.log(response)}
