@@ -117,7 +117,7 @@ function Navbar () {
                     localStorage.setItem("authToken", res.data.token);
                     setUsernameError("");
                     setPasswordError("");
-                    navigate("/hr/hrDashboard");
+                    navigate("/emp/empDashboard");
                   }
             
             })
