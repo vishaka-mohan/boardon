@@ -79,7 +79,10 @@ function EmpIndividualPoll () {
         ans.pollId = pollId
         const submitPollAPI = process.env.REACT_APP_POLL_SERVICE + "/emp/submitPoll" + 'http://localhost:3005/emp/submitPoll'
         axios.post(submitPollAPI, ans, {
-            withCredentials: true
+            withCredentials: true,
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+              },
         })
         .then(res=> {console.log(res.data)
            //setBackendData(res.data)
@@ -114,7 +117,10 @@ function EmpIndividualPoll () {
         const url = process.env.REACT_APP_POLL_SERVICE+window.location.pathname.toString() || 'http://localhost:3005'+window.location.pathname.toString()
          
         fetch(url, {
-            credentials : 'include'
+            credentials : 'include',
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+              },
         }).then(
         response => {return response.json()}
         //console.log(response)}
@@ -148,18 +154,19 @@ function EmpIndividualPoll () {
 
     const handleClick = async (e) => {
         console.log('hellp')
+        localStorage.removeItem("authToken");
         const logoutAPI = process.env.REACT_APP_AUTH_SERVICE+"/auth/logout" || 'http://localhost:3002/auth/logout'
-        axios.delete(logoutAPI, {
-            withCredentials : true
-        } )
-        .then(res=> {console.log(res.data)
-            if(res.data.status === "success"){
-                navigate('/')
-            }
+        // axios.delete(logoutAPI, {
+        //     withCredentials : true
+        // } )
+        // .then(res=> {console.log(res.data)
+        //     if(res.data.status === "success"){
+        //         navigate('/')
+        //     }
             
             
         
-        })
+        // })
         .catch(err=>console.log(err.response.data));
     }
 

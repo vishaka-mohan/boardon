@@ -101,7 +101,7 @@ function HrPolls () {
         e.preventDefault()
         var p = {pollName : pollName}
         console.log(p)
-        const createAPI = process.env.REACT_APP_POLL_SERVICE + "/hr/createPoll" + 'http://localhost:3005/hr/createPoll'
+        const createAPI = process.env.REACT_APP_POLL_SERVICE + "/hr/createPoll" || 'http://localhost:3005/hr/createPoll'
         axios.post(createAPI, p, {
             withCredentials: true,
             headers: {
@@ -126,7 +126,7 @@ function HrPolls () {
                 (
                     <>
                         <div className='login-modal'>
-                        <button className='blue-btn' style={{position : 'absolute', top : '30%' }} onClick={openModalOne}>Create poll</button>
+                        <button className='blue-btn' style={{position : 'absolute', top : '4%', right:'4%' }} onClick={openModalOne}>Create poll</button>
                     <Modal
                         isOpen={modalOneIsOpen}
                         onAfterOpen={afterOpenModal}
