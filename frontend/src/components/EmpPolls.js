@@ -41,6 +41,7 @@ function EmpPolls() {
     const viewEmpAPI = process.env.REACT_APP_POLL_SERVICE+"/emp/viewPolls" || "http://localhost:3005/emp/viewPolls"
     fetch(viewEmpAPI, {
       credentials: "include",
+      headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
     })
       .then(
         (response) => {

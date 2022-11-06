@@ -101,7 +101,8 @@ function EmpIndividualPoll () {
         var p = {pollId : pollId}
         const postPollAPI = process.env.REACT_APP_POLL_SERVICE+"/hr/postPoll" || 'http://localhost:3005/hr/postPoll'
         axios.post(postPollAPI, p, {
-            withCredentials: true
+            withCredentials: true,
+            headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
         })
         .then(res=> {console.log(res.data)
            //setBackendData(res.data)
