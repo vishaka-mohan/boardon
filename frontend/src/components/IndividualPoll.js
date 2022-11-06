@@ -128,6 +128,9 @@ function IndividualPoll() {
     axios
       .post(postPollAPIHR, p, {
         withCredentials: true,
+        headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
+      
+
       })
       .then((res) => {
         const data = res.data;
