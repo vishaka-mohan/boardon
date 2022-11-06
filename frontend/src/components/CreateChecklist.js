@@ -82,6 +82,7 @@ function CreateChecklist(){
     }
 
     useEffect(() => {
+        console.log(localStorage.getItem("authToken"))
         const url2 = process.env.REACT_APP_DOCUMENTS_SERVICE + "/hr/hrDashboard" || 'http://localhost:5000/hr/hrDashboard'
         
         fetch(url2, {
