@@ -97,7 +97,10 @@ function Navbar () {
         if(employee.role === 'user'){
             const userLoginAPI = process.env.REACT_APP_AUTH_SERVICE+ "/auth/user/login" || 'http://localhost:3002/auth/user/login'
             axios.post(userLoginAPI, employee, {
-                withCredentials: true
+                withCredentials: true,
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+                  },
             })
             .then(res=> {console.log(res.data)
                 if(res.data.status === 'error'){
@@ -108,12 +111,14 @@ function Navbar () {
                     setUsernameError(res.data.error)
                     else if(res.data.error === "Invalid Password")
                     setPasswordError(res.data.error)
+                    
                 }
-                else{
-                    setUsernameError('')
-                    setPasswordError('')
-                    navigate("/emp/empDashboard")
-                }
+                else if (res.data.status === "authenticated") {
+                    localStorage.setItem("authToken", res.data.token);
+                    setUsernameError("");
+                    setPasswordError("");
+                    navigate("/hr/hrDashboard");
+                  }
             
             })
             .catch(err=>console.log(err.response.data));
@@ -123,7 +128,10 @@ function Navbar () {
             const loginAPI = process.env.REACT_APP_AUTH_SERVICE+ '/auth/company/login' || 'http://localhost:3002/auth/company/login'
 
             axios.post(loginAPI, employee, {
-                withCredentials: true
+                withCredentials: true,
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+                  },
             })
             .then(res=> {console.log(res.data)
                 if(res.data.status === 'error'){
@@ -134,12 +142,14 @@ function Navbar () {
                     setUsernameError(res.data.error)
                     else if(res.data.error === "Invalid Password")
                     setPasswordError(res.data.error)
+                    
                 }
-                else{
-                    setUsernameError('')
-                    setPasswordError('')
-                    navigate("/hr/hrDashboard")
-                }
+                else if (res.data.status === "authenticated") {
+                    localStorage.setItem("authToken", res.data.token);
+                    setUsernameError("");
+                    setPasswordError("");
+                    navigate("/hr/hrDashboard");
+                  }
             
             
             })
@@ -162,7 +172,10 @@ function Navbar () {
         const registerAPI = process.env.REACT_APP_AUTH_SERVICE + "/auth/company/register" || 'http://localhost:3002/auth/company/register'
         
         axios.post(registerAPI, company, {
-            withCredentials: true
+            withCredentials: true,
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+              },
         })
         .then(res=> {console.log(res.data)
             if(res.data.status === 'error'){
