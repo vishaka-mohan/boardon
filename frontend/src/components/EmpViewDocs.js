@@ -32,7 +32,9 @@ function EmpViewDocs(){
     useEffect(() => {
         const url1 = process.env.REACT_APP_DOCUMENTS_SERVICE+ "/emp/empDashboard" || 'http://localhost:5000/emp/empDashboard'
         fetch(url1, {
-            credentials : 'include'
+            credentials : 'include',
+            headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` }
+
         }).then(
         response => {return response.json()}
         //console.log(response)}
