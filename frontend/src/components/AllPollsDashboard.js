@@ -81,22 +81,23 @@ function AllPollsDashboard () {
     const handleClick = async (e) => {
         console.log('hellp')
         const logoutAPI = process.env.REACT_APP_AUTH_SERVICE+"/auth/logout" || 'http://localhost:3002/auth/logout'
-        axios.delete(logoutAPI, {
+        localStorage.removeItem("authToken");
+        // axios.delete(logoutAPI, {
            
-            withCredentials : true,
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-              }
-        } )
-        .then(res=> {console.log(res.data)
-            if(res.data.status === "success"){
-                navigate('/')
-            }
+        //     withCredentials : true,
+        //     headers: {
+        //         Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+        //       }
+        // } )
+        // .then(res=> {console.log(res.data)
+        //     if(res.data.status === "success"){
+        //         navigate('/')
+        //     }
             
             
         
-        })
-        .catch(err=>console.log(err.response.data));
+        // })
+        // .catch(err=>console.log(err.response.data));
     }
 
 

@@ -61,18 +61,19 @@ function HrDashboard() {
 
   const handleClick = async (e) => {
     console.log("hellp");
-    const logoutAPI = process.env.REACT_APP_AUTH_SERVICE+"/auth/logout" || 'http://localhost:3002/auth/logout'
-    axios
-      .delete(logoutAPI, {
-        withCredentials: true,
-      })
-      .then((res) => {
-        console.log(res.data);
-        if (res.data.status === "success") {
-          navigate("/");
-        }
-      })
-      .catch((err) => console.log(err.response.data));
+    // const logoutAPI = process.env.REACT_APP_AUTH_SERVICE+"/auth/logout" || 'http://localhost:3002/auth/logout'
+    // axios
+    //   .delete(logoutAPI, {
+    //     withCredentials: true,
+    //   })
+    //   .then((res) => {
+    //     console.log(res.data);
+    //     if (res.data.status === "success") {
+    //       navigate("/");
+    //     }
+    //   })
+    //   .catch((err) => console.log(err.response.data));
+    localStorage.removeItem("authToken");
   };
 
   return (
