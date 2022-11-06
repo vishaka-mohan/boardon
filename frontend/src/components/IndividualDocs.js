@@ -21,6 +21,9 @@ function IndividualDocs() {
     //console.log(window.location.pathname)
     fetch(window.location.pathname, {
       credentials: "include",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+      },
     })
       .then(
         (response) => {
@@ -61,6 +64,9 @@ function IndividualDocs() {
     axios
       .post(url1, commToAdd, {
         withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+        },
       })
       .then((res) => {
         console.log(res.data);

@@ -5,7 +5,7 @@ import working_woman from "./working_woman.png";
 function AllDocs() {
   const [backendData, setBackendData] = useState([{}]);
   const url1 = process.env.REACT_APP_DOCUMENTS_SERVICE + "/hr/getDocs" || "http://localhost:5000/hr/getDocs"
-
+  console.log(url1)
   useEffect(() => {
     fetch(url1, {
       headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
