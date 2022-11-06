@@ -23,15 +23,15 @@ app.use(express.static(path.join(__dirname, "public")));
 //   );
 //   next();
 // });
-const host = process.env.FRONTEND || "http://localhost:3000"
-app.use(cors({ credentials: true, origin: host }));
+
 const connectDB = require("./api/config/db");
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 //app.set("view engine", "ejs")
 connectDB();
-
+const host = process.env.FRONTEND || "http://localhost:3000"
+app.use(cors({ credentials: true, origin: host }));
 app.use((req, res, next) => {
   log.debug(`${req.method}: ${req.url}`);
   return next();
