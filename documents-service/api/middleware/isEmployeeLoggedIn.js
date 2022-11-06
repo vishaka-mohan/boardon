@@ -6,9 +6,11 @@ const isLoggedIn = async (req, res, next) => {
     //console.log(req.cookies)
     //console.log(authToken);
     const response = await axios.get(`${authUrl}/auth/user/isLoggedIn`, {
-      headers: {
-        Cookie: `authToken=${authToken};`,
-      },
+      
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+      
     });
     //console.log(response.data);
     const authStatus = response.data.Authenticated;
