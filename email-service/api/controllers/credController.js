@@ -26,6 +26,7 @@ async function isEmailValid(email) {
 }
 
 sendCredentailsToUser = async (employee, req) => {
+  console.log("hello check")
   const receiver = employee.email;
   const company = req.userData.name;
   const firstName = employee.firstname;
@@ -102,7 +103,6 @@ sendCredentailsToUser = async (employee, req) => {
                         html: `<p>Congratulations <b>${firstName} ${lastName}</b> on getting an offer at
                     <b>${company}</b>. Below are the credentials to login to the BoardOn Portal, scan the QR Code
                     to read the same.</p>
-
                     <p><img src=${imgUrl}></p>
                     <p></p>
                     <h3>
@@ -161,6 +161,8 @@ sendCredentailsToUser = async (employee, req) => {
 
 generateCredentialsFromExcel = (req, res) => {
   const filePath = req.file.path;
+  console.log("filepath")
+  console.log(filePath)
   const result = excelToJson({
     sourceFile: filePath,
     header: {
