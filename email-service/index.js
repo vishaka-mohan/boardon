@@ -8,8 +8,7 @@ const cookieParser = require("cookie-parser");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const cors = require("cors");
-const host = process.env.FRONTEND || "http://localhost:3000"
-app.use(cors({ credentials: true, origin: host }));
+
 connectDB();
 
 app.use((req, res, next) => {
@@ -17,6 +16,8 @@ app.use((req, res, next) => {
   return next();
 });
 app.use(cookieParser());
+const host = process.env.FRONTEND || "http://localhost:3000"
+app.use(cors({ credentials: true, origin: host }));
 const credRoutes = require("./api/routes/credRoutes");
 app.use("/cred", credRoutes);
 
