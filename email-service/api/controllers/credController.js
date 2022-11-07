@@ -91,6 +91,7 @@ sendCredentailsToUser = async (employee, req) => {
               );
               //ISP blocks connections to port 25
               if (valid || validators[reason].reason == "Timeout") {
+                console.log("inside valid")
                 employeeEntity
                   .save()
                   .then((newEmployee) => {
