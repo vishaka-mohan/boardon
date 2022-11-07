@@ -67,6 +67,7 @@ sendCredentailsToUser = async (employee, req) => {
     .exec()
     .then(async (foundUsers) => {
       if (foundUsers.length == 0) {
+        console.log("valid to create user")
         Employee.find({ phone: phone })
           .exec()
           .then(async (foundUsers2) => {
