@@ -11,7 +11,7 @@ const isCompanyLoggedIn = require("../middleware/isCompanyLoggedIn");
 
 const storageEngine = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "/tmp/uploads");
+    cb(null, "/tmp/");
   },
   filename: function (req, file, cb) {
     var datetimestamp = Date.now();
