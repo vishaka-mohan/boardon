@@ -114,6 +114,8 @@ sendCredentailsToUser = async (employee, req) => {
 
                       transporter.sendMail(mailOptions).then((obj) => {
                         log.info(`Mail sent to ${receiver}`);
+                        console.log("hellooo")
+                        console.log(receiver)
                       });
 
                       return { message: "Sent successfully" };
