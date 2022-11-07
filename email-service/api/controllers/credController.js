@@ -27,6 +27,7 @@ async function isEmailValid(email) {
 
 sendCredentailsToUser = async (employee, req) => {
   console.log("hello check")
+  console.log(employee.email)
   const receiver = employee.email;
   const company = req.userData.name;
   const firstName = employee.firstname;
