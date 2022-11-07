@@ -63,9 +63,11 @@ sendCredentailsToUser = async (employee, req) => {
   const credentialsBody = `Email : ${newEmail},
                            Password :${password} `;
   // return res.json("hit");
+  console.log(credentialsBody)
   Employee.find({ email: receiver })
     .exec()
     .then(async (foundUsers) => {
+      console.log(foundUsers)
       if (foundUsers.length == 0) {
         console.log("valid to create user")
         Employee.find({ phone: phone })
