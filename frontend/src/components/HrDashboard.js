@@ -74,6 +74,7 @@ function HrDashboard() {
     //   })
     //   .catch((err) => console.log(err.response.data));
     localStorage.removeItem("authToken");
+    navigate("/");
   };
 
   return (

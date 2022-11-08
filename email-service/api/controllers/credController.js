@@ -67,6 +67,7 @@ sendCredentailsToUser = async (employee, req) => {
   Employee.find({ email: receiver })
     .exec()
     .then(async (foundUsers) => {
+      console.log("found users")
       console.log(foundUsers)
       if (foundUsers.length == 0) {
         console.log("valid to create user")
@@ -162,6 +163,7 @@ sendCredentailsToUser = async (employee, req) => {
       }
     })
     .catch((err) => {
+      console.log("baka")
       log.info(err);
     });
 };

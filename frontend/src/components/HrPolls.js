@@ -82,6 +82,7 @@ function HrPolls () {
         console.log('hellp')
         const logoutAPI = process.env.REACT_APP_AUTH_SERVICE+"/auth/logout" || 'http://localhost:3002/auth/logout'
         localStorage.removeItem("authToken");
+        navigate('/')
         // axios.delete(logoutAPI, {
         //     withCredentials : true
         // } )

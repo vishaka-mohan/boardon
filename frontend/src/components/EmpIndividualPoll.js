@@ -157,6 +157,7 @@ function EmpIndividualPoll () {
         console.log('hellp')
         localStorage.removeItem("authToken");
         const logoutAPI = process.env.REACT_APP_AUTH_SERVICE+"/auth/logout" || 'http://localhost:3002/auth/logout'
+        navigate('/')
         // axios.delete(logoutAPI, {
         //     withCredentials : true
         // } )
